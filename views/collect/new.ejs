@@ -1,0 +1,61 @@
+<% layout('layout/example') %>
+
+<div class="row">
+    <div class="offset-3 col-6">
+        <h1>アニメの新規作成</h1>
+        <form action="/anime" method="post" class="validated-form" novalidate>
+
+            <div class="mb-3">
+            <label for="name" class="form-label">名前</label>
+            <input class="form-control" type="text" id="name" placeholder="名前" name="watch[name]" required>
+            <div class="valid-feedback">
+                ありがとう
+              </div>          
+        </div>
+
+            <div class="mb-3">
+            <label for="evaluation" class="form-label">点数</label>
+            <input class="form-control" type="number" id="evaluation" name="watch[evaluation]" required>
+            <div class="valid-feedback">
+                ありがとう
+              </div>
+          
+        </div>
+
+            <div class="mb-3">
+            <label for="category" class="form-label">カテゴリー</label>
+            <select class="form-select" aria-label="Default select example" name="watch[category]" id="category">
+                <option value="SF">SF</option>
+                <option value="アクション">アクション</option>
+                <option value="コメディー">コメディー</option>
+            </select>
+            <div class="valid-feedback">
+                ありがとう
+              </div>
+        </div>   
+
+            <div class="mb-3">
+            <label for="story" class="form-label">あらすじ</label>
+            <textarea name="watch[story]" id="story" placeholder="あらすじ" class="form-control"  rows="5" cols="40" required></textarea> 
+            <div class="valid-feedback">
+                ありがとう
+              </div>
+          
+        </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">画像url</label>
+                <input class="form-control" type="text" id="image" name="watch[image]" required>
+                <div class="valid-feedback">
+                    ありがとう
+                  </div>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">送信</button>
+      </form>
+    </div>
+</div>
+
+

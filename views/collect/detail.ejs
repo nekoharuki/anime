@@ -1,0 +1,53 @@
+<% layout('layout/example') %>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <img src="<%=watch.image  %>" class="card-img-top" alt="アニメ画像">
+            <div class="card-body">
+              <h5 class="card-title"><%=watch.name%></h5>
+              <p class="card-text"><%=watch.story  %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">カテゴリ: <%=watch.category %></li>
+              <li class="list-group-item">点数: <%=watch.evaluation  %></li>
+            </ul>
+            <div class="card-body">
+              <a href="/anime/<%= watch._id %>/edit" class="btn btn-info">編集する</a>
+              <form class="d-inline" action="/anime/<%= watch._id  %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">削除</button>
+            </form>
+        
+            </div>
+          </div>
+      </div>
+        <div class="col-6">
+          <h2>評価☆</h2>
+          <form action="/anime/<%= watch._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+            <div class="mb-3">
+              <label for="rating" class="form-label" >評価</label>
+              <input type="range" min="1" max="5" name="review[rating]" id="rating" class="form-range" required>
+              </div>
+              <div class="mb-3">
+              <label class="form-label" for="body">アニメレビュー</label>
+              <textarea name="review[body]" class="form-control" id="body" cols="30" rows="5" placeholder="アニメ感想" required></textarea>
+              <div class="valid-feedback">
+                ありがとう
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">送信</button>
+          </form>
+     
+            <% for(let review of watch.reviews)  {%>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">評価: <%=review.rating%></h5>
+                <p class="card-text"><%=review.body  %></p>
+                <form action="/anime/<%= watch._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                  <button type="submit" class="btn btn-danger">削除</button>
+                </form>
+          </div>
+          </div>
+          <% } %>
+        </div>
+</div>
+  
